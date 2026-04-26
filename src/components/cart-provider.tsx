@@ -7,7 +7,6 @@ import {
   MessageCircle,
   Minus,
   Plus,
-  ShoppingBag,
   Trash2,
   X,
 } from 'lucide-react';
@@ -20,7 +19,7 @@ import {
 } from 'react';
 
 import type { CatalogProduct } from '@/lib/catalog';
-import { buildCartInquiry, cn, formatPrice } from '@/lib/utils';
+import { buildCartInquiry, formatPrice } from '@/lib/utils';
 
 const STORAGE_KEY = 'heritage-dresses-cart';
 
@@ -69,27 +68,24 @@ function CartCheckoutFooter({ items }: { items: CartItem[] }) {
   };
 
   return (
-    <div className="border-t border-ink/10 bg-bone/50 px-6 py-6">
-      <div className="flex items-baseline justify-between border-b border-ink/15 pb-4">
-        <span className="mono-label text-ink/60">Total</span>
-        <span className="font-display text-[2rem] font-light tracking-editorial text-ink">
+    <div className="border-t border-ink/10 bg-ivory px-6 py-5">
+      <div className="flex items-baseline justify-between pb-4">
+        <span className="text-ink/60">Total</span>
+        <span className="font-display text-xl font-light text-ink">
           {formatPrice(total)}
         </span>
       </div>
-      <p className="mt-4 text-[0.9rem] leading-[1.7] text-ink/60">
-        Votre commande est enregistrée puis finalisée par WhatsApp.
-      </p>
       {error ? (
-        <p className="mt-2 text-[0.85rem] text-terracotta">{error}</p>
+        <p className="mb-2 text-[0.85rem] text-terracotta">{error}</p>
       ) : null}
       <button
         type="button"
         onClick={handleCheckout}
         disabled={loading}
-        className="btn-editorial btn-solid mt-5 w-full disabled:opacity-60"
+        className="btn-editorial btn-solid w-full disabled:opacity-60"
       >
         <MessageCircle className="h-4 w-4" />
-        {loading ? 'Envoi…' : 'Finaliser ma commande'}
+        {loading ? 'Envoi…' : 'Commander sur WhatsApp'}
       </button>
     </div>
   );
@@ -157,107 +153,92 @@ function CartDrawer({
             exit={{ x: '100%' }}
             transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
           >
-            <div className="flex items-start justify-between border-b border-ink/10 px-6 py-6">
-              <div>
-                <p className="mono-label text-terracotta">Votre sélection</p>
-                <h2 className="mt-4 font-display text-[2.5rem] font-light leading-none tracking-editorial text-ink">
-                  {itemCount.toString().padStart(2, '0')}
-                  <span className="ml-2 text-lg text-ink/50">
-                    {itemCount > 1 ? 'pièces' : 'pièce'}
-                  </span>
-                </h2>
-              </div>
+            <div className="flex items-center justify-between border-b border-ink/10 px-6 py-5">
+              <h2 className="font-display text-2xl font-light tracking-editorial text-ink">
+                Panier
+                {itemCount > 0 ? (
+                  <span className="ml-2 text-ink/50">({itemCount})</span>
+                ) : null}
+              </h2>
 
               <button
                 type="button"
                 onClick={closeCart}
-                className="flex items-center gap-2 border border-ink/20 px-3 py-2 text-ink transition hover:border-ink"
+                className="p-2 text-ink/70 transition hover:text-ink"
                 aria-label="Fermer"
               >
-                <X className="h-4 w-4" />
-                <span className="mono-tag">Fermer</span>
+                <X className="h-5 w-5" />
               </button>
             </div>
 
             {items.length === 0 ? (
               <div className="flex flex-1 flex-col items-center justify-center px-8 text-center">
-                <ShoppingBag className="h-8 w-8 text-terracotta" strokeWidth={1.2} />
-                <h3 className="mt-8 font-display text-[2.5rem] font-light leading-none tracking-editorial text-ink">
-                  Panier
-                  <br />
-                  <em className="italic text-terracotta">vide</em>
-                </h3>
-                <p className="mt-6 max-w-xs text-[0.95rem] leading-[1.75] text-ink/65">
-                  Composez votre tenue idéale en parcourant nos collections.
+                <p className="font-display text-2xl font-light tracking-editorial text-ink">
+                  Votre panier est vide
                 </p>
                 <Link
                   href="/collections"
                   onClick={closeCart}
-                  className="btn-editorial btn-solid mt-10"
+                  className="btn-editorial btn-solid mt-8"
                 >
-                  Voir les collections →
+                  Voir les collections
                 </Link>
               </div>
             ) : (
               <>
                 <div className="flex-1 divide-y divide-ink/10 overflow-y-auto">
                   {items.map((item) => (
-                    <article key={item.id} className="flex gap-5 px-6 py-6">
-                      <div className="relative h-32 w-24 shrink-0 overflow-hidden bg-bone">
+                    <article key={item.id} className="flex gap-4 px-6 py-5">
+                      <div className="relative h-28 w-20 shrink-0 overflow-hidden bg-bone">
                         <Image
                           src={item.src}
                           alt={item.alt}
                           fill
-                          sizes="96px"
+                          sizes="80px"
                           className="object-cover"
                         />
                       </div>
 
                       <div className="flex min-w-0 flex-1 flex-col">
                         <div className="flex items-start justify-between gap-3">
-                          <div>
-                            <p className="mono-tag text-ink/45">
-                              {item.collectionName}
-                            </p>
-                            <h3 className="mt-1 font-display text-xl font-light leading-tight tracking-editorial text-ink">
-                              {item.productName}
-                            </h3>
-                          </div>
-                          <span className="whitespace-nowrap font-display text-lg text-ink">
+                          <h3 className="font-display text-lg font-light leading-tight tracking-editorial text-ink">
+                            {item.productName}
+                          </h3>
+                          <span className="whitespace-nowrap font-display text-base text-ink">
                             {formatPrice(item.price * item.quantity)}
                           </span>
                         </div>
 
-                        <div className="mt-auto flex items-center justify-between gap-4 pt-4">
+                        <div className="mt-auto flex items-center justify-between gap-3 pt-3">
                           <div className="inline-flex items-center border border-ink/20">
                             <button
                               type="button"
                               onClick={() => updateQuantity(item.id, item.quantity - 1)}
-                              className="p-2 text-ink transition hover:text-terracotta"
-                              aria-label={`Retirer une unite de ${item.productName}`}
+                              className="px-2.5 py-1.5 text-ink transition hover:text-terracotta"
+                              aria-label="Retirer une unité"
                             >
-                              <Minus className="h-3.5 w-3.5" />
+                              <Minus className="h-3 w-3" />
                             </button>
-                            <span className="min-w-8 text-center font-mono text-xs font-medium text-ink">
-                              {item.quantity.toString().padStart(2, '0')}
+                            <span className="min-w-7 text-center font-mono text-xs text-ink">
+                              {item.quantity}
                             </span>
                             <button
                               type="button"
                               onClick={() => updateQuantity(item.id, item.quantity + 1)}
-                              className="p-2 text-ink transition hover:text-terracotta"
-                              aria-label={`Ajouter une unite de ${item.productName}`}
+                              className="px-2.5 py-1.5 text-ink transition hover:text-terracotta"
+                              aria-label="Ajouter une unité"
                             >
-                              <Plus className="h-3.5 w-3.5" />
+                              <Plus className="h-3 w-3" />
                             </button>
                           </div>
 
                           <button
                             type="button"
                             onClick={() => removeItem(item.id)}
-                            className="mono-tag flex items-center gap-1.5 text-ink/55 transition hover:text-terracotta"
+                            className="text-sm text-ink/50 transition hover:text-terracotta"
+                            aria-label="Retirer du panier"
                           >
-                            <Trash2 className="h-3 w-3" />
-                            Retirer
+                            <Trash2 className="h-4 w-4" />
                           </button>
                         </div>
                       </div>

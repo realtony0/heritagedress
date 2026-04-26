@@ -1,4 +1,5 @@
 import { NextResponse } from 'next/server';
+import { revalidatePath } from 'next/cache';
 
 import { db, productOverrides } from '@/db';
 import { sql } from 'drizzle-orm';
@@ -53,6 +54,12 @@ export async function PATCH(
         updatedAt: sql`now()`,
       },
     });
+
+  // Invalide les pages publiques qui affichent les prix
+  revalidatePath('/');
+  revalidatePath('/collections');
+  revalidatePath(`/collections/${body.collectionSlug}`);
+  revalidatePath('/admin/produits');
 
   return NextResponse.json({ ok: true });
 }

@@ -1,7 +1,7 @@
 'use client';
 
 import { useRouter } from 'next/navigation';
-import { FormEvent, useState, useTransition } from 'react';
+import { FormEvent, useEffect, useState, useTransition } from 'react';
 
 import { cn } from '@/lib/utils';
 
@@ -27,6 +27,15 @@ export function ProductRowControls({
   const [pending, startTransition] = useTransition();
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
+
+  // Resynchronise l'état local quand les props changent (après router.refresh())
+  useEffect(() => {
+    setPrice(String(currentPrice));
+  }, [currentPrice]);
+
+  useEffect(() => {
+    setIsAvailable(available);
+  }, [available]);
 
   const save = async (nextPrice: number | null, nextAvailable: boolean) => {
     setLoading(true);
