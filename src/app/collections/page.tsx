@@ -3,11 +3,10 @@ import Link from 'next/link';
 
 import { Reveal, Stagger, StaggerItem } from '@/components/reveal';
 import { SchemaScript } from '@/components/schema-script';
-import { DEFAULT_PRICE } from '@/config/site';
 import { getCollections } from '@/lib/catalog';
 import { buildPageMetadata } from '@/lib/metadata';
 import { getLocalBusinessSchema } from '@/lib/schema';
-import { formatCollectionPath, formatPrice } from '@/lib/utils';
+import { formatCollectionPath } from '@/lib/utils';
 
 export const revalidate = 3600;
 
@@ -99,13 +98,7 @@ export default async function CollectionsPage() {
                         <p className="mt-8 max-w-md text-[1.02rem] leading-[1.8] text-ink/70">
                           {collection.description}
                         </p>
-                        <div className="mt-10 flex items-end justify-between gap-6 border-t border-ink/15 pt-6">
-                          <div>
-                            <span className="mono-tag text-ink/45">Dès</span>
-                            <p className="mt-1 font-display text-2xl font-light text-ink">
-                              {formatPrice(DEFAULT_PRICE)}
-                            </p>
-                          </div>
+                        <div className="mt-10 flex items-end justify-end gap-6 border-t border-ink/15 pt-6">
                           <span className="mono-label text-ink transition-colors group-hover:text-terracotta">
                             Voir la collection →
                           </span>

@@ -6,11 +6,9 @@ import { LightboxGallery } from '@/components/lightbox-gallery';
 import { Reveal } from '@/components/reveal';
 import { SchemaScript } from '@/components/schema-script';
 import { StickyCartBar } from '@/components/sticky-cart-bar';
-import { DEFAULT_PRICE } from '@/config/site';
 import { getCollectionBySlug, getCollections } from '@/lib/catalog';
 import { buildPageMetadata } from '@/lib/metadata';
 import { getCollectionProductSchema, getLocalBusinessSchema } from '@/lib/schema';
-import { formatPrice } from '@/lib/utils';
 
 export const revalidate = 3600;
 
@@ -113,12 +111,6 @@ export default async function CollectionPage({
                   <span className="mono-tag text-ivory/55">Pièces</span>
                   <p className="mt-1 font-display text-2xl font-light tracking-editorial text-ivory">
                     {collection.products.length.toString().padStart(2, '0')}
-                  </p>
-                </div>
-                <div>
-                  <span className="mono-tag text-ivory/55">Dès</span>
-                  <p className="mt-1 font-display text-2xl font-light tracking-editorial text-ivory">
-                    {formatPrice(DEFAULT_PRICE)}
                   </p>
                 </div>
               </div>
