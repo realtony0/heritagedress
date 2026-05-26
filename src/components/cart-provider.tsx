@@ -39,6 +39,9 @@ function CartCheckoutFooter({ items }: { items: CartItem[] }) {
     setLoading(true);
     setError(null);
 
+    const whatsappUrl = buildCartInquiry(items);
+    window.open(whatsappUrl, '_blank', 'noopener,noreferrer');
+
     const payload = {
       items: items.map((item) => ({
         reference: item.reference,
@@ -49,8 +52,6 @@ function CartCheckoutFooter({ items }: { items: CartItem[] }) {
         quantity: item.quantity,
       })),
     };
-
-    const whatsappUrl = buildCartInquiry(items);
 
     try {
       await fetch('/api/orders', {
@@ -63,7 +64,6 @@ function CartCheckoutFooter({ items }: { items: CartItem[] }) {
       setError('Commande non enregistrée, mais vous pouvez continuer sur WhatsApp.');
     } finally {
       setLoading(false);
-      window.open(whatsappUrl, '_blank', 'noopener,noreferrer');
     }
   };
 
