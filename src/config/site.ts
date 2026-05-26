@@ -141,6 +141,13 @@ export const siteConfig = {
         { order: 4, kind: 'ensemble' },
       ],
     },
+    {
+      slug: 'racky',
+      name: 'Racky',
+      description: 'Une collection pleine de caractere, melant modernite et heritage africain. Des pieces uniques pensees pour les femmes qui osent.',
+      shortDescription: 'Modernite et heritage africain meles.',
+      products: [],
+    },
   ] satisfies CollectionConfig[],
 } as const;
 
