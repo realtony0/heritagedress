@@ -142,6 +142,17 @@ export const siteConfig = {
       ],
     },
     {
+      slug: 'rita',
+      name: 'Rita',
+      description: 'Des robes longues boutonnees aux coupes fluides et manches papillon, declinees dans des teintes elegantes. La feminite dans toute sa simplicite raffinee.',
+      shortDescription: 'Robes boutonnees fluides et manches papillon.',
+      products: [
+        { order: 1, kind: 'robe', price: 35 },
+        { order: 2, kind: 'robe', price: 35 },
+        { order: 3, kind: 'robe', price: 35 },
+      ],
+    },
+    {
       slug: 'racky',
       name: 'Racky',
       description: 'Une collection pleine de caractere, melant modernite et heritage africain. Des pieces uniques pensees pour les femmes qui osent.',
