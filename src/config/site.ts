@@ -142,6 +142,41 @@ export const siteConfig = {
       ],
     },
     {
+      slug: 'rita',
+      name: 'Rita',
+      description: 'Des robes longues boutonnees aux coupes fluides et manches papillon, declinees dans des teintes elegantes. La feminite dans toute sa simplicite raffinee.',
+      shortDescription: 'Robes boutonnees fluides et manches papillon.',
+      products: [
+        { order: 1, kind: 'robe', price: 35 },
+        { order: 2, kind: 'robe', price: 35 },
+        { order: 3, kind: 'robe', price: 35 },
+      ],
+    },
+    {
+      slug: 'maria',
+      name: 'Maria',
+      description: 'Une collection elegante aux lignes epurees et au raffinement discret. Des pieces pensees pour sublimer chaque silhouette.',
+      shortDescription: 'Lignes epurees et raffinement discret.',
+    },
+    {
+      slug: 'safia',
+      name: 'Safia',
+      description: 'Des creations delicates aux finitions soignees, entre tradition et modernite. Pour une allure elegante en toute occasion.',
+      shortDescription: 'Finitions soignees, entre tradition et modernite.',
+    },
+    {
+      slug: 'summer',
+      name: 'Summer',
+      description: 'Des pieces legeres et lumineuses, ideales pour les beaux jours. La fraicheur et l\'elegance reunies.',
+      shortDescription: 'Pieces legeres et lumineuses pour les beaux jours.',
+    },
+    {
+      slug: 'souad',
+      name: 'Souad',
+      description: 'Une collection pleine de caractere aux coupes affirmees et aux details soignes. L\'elegance pour les femmes qui s\'assument.',
+      shortDescription: 'Coupes affirmees et details soignes.',
+    },
+    {
       slug: 'racky',
       name: 'Racky',
       description: 'Une collection pleine de caractere, melant modernite et heritage africain. Des pieces uniques pensees pour les femmes qui osent.',
