@@ -157,24 +157,44 @@ export const siteConfig = {
       name: 'Maria',
       description: 'Une collection elegante aux lignes epurees et au raffinement discret. Des pieces pensees pour sublimer chaque silhouette.',
       shortDescription: 'Lignes epurees et raffinement discret.',
+      products: [
+        { order: 1, kind: 'ensemble', price: 45 },
+        { order: 2, kind: 'ensemble', price: 45 },
+        { order: 3, kind: 'ensemble', price: 45 },
+        { order: 4, kind: 'ensemble', price: 45 },
+        { order: 5, kind: 'ensemble', price: 45 },
+      ],
     },
     {
       slug: 'safia',
       name: 'Safia',
       description: 'Des creations delicates aux finitions soignees, entre tradition et modernite. Pour une allure elegante en toute occasion.',
       shortDescription: 'Finitions soignees, entre tradition et modernite.',
+      products: [
+        { order: 1, kind: 'robe', price: 35 },
+        { order: 2, kind: 'robe', price: 35 },
+      ],
     },
     {
       slug: 'summer',
       name: 'Summer',
       description: 'Des pieces legeres et lumineuses, ideales pour les beaux jours. La fraicheur et l\'elegance reunies.',
       shortDescription: 'Pieces legeres et lumineuses pour les beaux jours.',
+      products: [
+        { order: 1, kind: 'robe', price: 35 },
+        { order: 2, kind: 'robe', price: 35 },
+      ],
     },
     {
       slug: 'souad',
       name: 'Souad',
       description: 'Une collection pleine de caractere aux coupes affirmees et aux details soignes. L\'elegance pour les femmes qui s\'assument.',
       shortDescription: 'Coupes affirmees et details soignes.',
+      products: [
+        { order: 1, kind: 'ensemble', price: 45 },
+        { order: 2, kind: 'ensemble', price: 45 },
+        { order: 3, kind: 'ensemble', price: 45 },
+      ],
     },
     {
       slug: 'racky',
